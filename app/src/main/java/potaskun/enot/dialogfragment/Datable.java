@@ -6,4 +6,5 @@ package potaskun.enot.dialogfragment;
 
 public interface Datable {
     void updateTextView(String name);
+    void updateTextList(String id);
 }
