@@ -6,10 +6,12 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
+import android.widget.TextView;
 
 import java.util.ArrayList;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity
+implements Datable{
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,6 +33,8 @@ public class MainActivity extends AppCompatActivity {
         final ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, phone);
         /*Назначаем нашему ListView созданый адаптер с значениями*/
         phoneList.setAdapter(adapter);
+
+        System.out.println("adapter: " +adapter);
 
         /* Вешаем слушателя на нажатия по элементу ListView */
         phoneList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -59,5 +63,13 @@ public class MainActivity extends AppCompatActivity {
     public void showDialog(View view) {
         CustomDialogFragment dialog = new CustomDialogFragment();
         dialog.show(getSupportFragmentManager(), "custom");
+    }
+
+    /**
+     * Меняем значение поля текст на выбранное в диалоге
+     */
+    public void updateTextView(String name){
+        TextView textView = findViewById(R.id.textView);
+        textView.setText(name);
     }
 }
